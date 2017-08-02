@@ -1,0 +1,708 @@
+body{
+    margin: 0;
+    position: relative;
+}
+ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+h2,h3{
+    margin: 0;
+    padding: 0;
+}
+img{
+    border: none;
+}
+input{
+    margin: 0;
+    padding: 0;
+}
+#zhankai{
+    width: 30px;
+    height: 50px;
+    font: 15px/50px arial;
+    text-align: center;
+    background: #1f4386;
+    color: white;
+    position: fixed;
+    top: 200px;
+    left: 0;
+    border: 2px solid black;
+    border-left: none;
+    padding: 0 10px;
+    z-index: 99999999;
+    cursor: pointer;
+    display: none;
+}
+#cal_wrap{
+    background: #1f4386;
+    @w:320px;
+    width: @w;
+    height: 736px;
+    padding: 20px;
+    .border(all); 
+//  overflow: hidden;
+    position: fixed;
+    top: 0;
+    left: 0px;
+    .suolue{
+        width: 30px;
+        height: 30px;
+        position: absolute;
+        top: -4px;
+        right: -4px;
+        cursor: pointer;
+    }
+    #bgimg{
+        position: absolute;
+        top: 36px;
+        right: 36px;
+        width: 20%;
+        height: 9%;
+        z-index: 999;
+        opacity: 0.8;
+        cursor: pointer;
+    }
+    #bgimg:hover{
+        opacity: 1;
+    }
+    #shadowbox{
+        width: 360px;
+        height: 1000px;
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        background: rgba(0,0,0,0.5);
+        display: none;
+        z-index: 99;
+    }
+    #timer_box{
+        width: @w;
+        height: 112px;
+        .border(bottom);
+        .background-color;
+        .time_detail{
+            width: 300px;
+            height: 70px;
+            padding: 10px 10px 0 10px;
+            font: 50px/70px arial;
+            color: white;
+        }
+        .date_detail{
+            width: 310px;
+            height: 32px;
+            padding:0 10px 10px 10px;
+            font:bolder 15px/22px arial;
+            color: #6192b3;
+            cursor: pointer;
+        }
+        .date_detail:hover{
+            color: white;
+        }
+    }
+    #calendar_box{
+        width: @w;
+        .border(bottom);
+        .background-color;
+        .time_btn{
+            width: 300px;
+            height: 16px;
+            font: 15px/16px arial;
+            color: white;
+            padding: 16px 10px 0 10px;
+            .YearanfMonth{
+                display: inline-block;
+                width: 100px;
+                height: 16px;
+                float: left;
+                cursor: pointer;
+            }
+            .prev,.next{
+                display: inline-block;
+                height: 16px;
+                float: right;
+                cursor: pointer;
+                margin-left: 10px;
+                img{
+                    height: 16px;
+                    width: 20px;
+                }
+            }
+        }
+        .cal_content{
+            width: 320px;
+            height: 340px;
+            overflow: hidden;
+            ul{
+               padding: 0;
+               margin: 0;
+               list-style: none;
+            }
+            .ul1{
+               width: 308px; 
+               height: 52px;//下面是48px
+               padding: 0 6px;
+               li{
+                   width: 44px;
+                   height: 52px;
+                   display: inline-block;
+                   text-align: center;
+                   font: 15px/52px "微软雅黑";
+                   color: white;
+               }
+            }
+            .ul2{
+                 width: 308px; 
+                 padding: 0 6px;
+                 li{
+                       width: 44px;
+                       height: 48px;
+                       display: inline-block;
+                       text-align: center;
+                       font: 15px/48px "微软雅黑";
+                       color: white;
+                       vertical-align:top;
+                       cursor: default;
+                 }
+                 li:not(.selectedDay):hover{
+                           width: 40px;
+                           height: 43px;//为什么是43，明明就应该是44啊
+                           border: 2px solid rgba(255,255,255,0.7); 
+                           font: 15px/43px "微软雅黑";//为什么是43，明明就应该是44啊
+                           vertical-align:text-top;
+                           background: none;
+                 }
+                 .selectedDay{
+                     width: 40px;
+                     height: 44px;
+                     border: 2px solid rgba(255,255,255,0.7);
+                     background-color: #0078d7;
+                 }
+            }
+        }
+    }
+    #rightmune{
+        width: 110px;
+        height: 20px;
+        font: 15px/20px "微软雅黑";
+        text-align: center;
+        color: white;
+        border: 2px solid rgba(255,255,255,0.7);
+        background-color: #0078d7;
+        padding: 5px;
+        cursor: pointer;
+        position: absolute;
+        left: 0;
+        top: 0;
+        display: none;
+        z-index: 999;
+    }
+    #notedetail{
+        width: @w;
+        background-color:  rgba(225,225,225,0.4); 
+        display: none;
+        position: absolute;
+        bottom: 0;
+        z-index: 99999;
+        border-radius: 5px;
+        .titleName{
+            width: 300px;
+            height: 30px;
+            padding: 20px 10px;
+            font: 18px/30px "微软雅黑";
+            color: white;
+            text-align: center;
+        }
+        .eventName{
+            .outstyle;
+            #eventText{
+                .instyle(220px,30px);
+                font:bold 16px/30px "微软雅黑";
+                }
+        }
+        .alertTime{
+            .outstyle;
+            #alertText{
+                .instyle(216px,30px);
+                font:bold 15px/30px "微软雅黑";
+               }
+        }
+        .eventDetail{
+            margin: 10px;
+            width: 300px;
+            height: 200px;
+            background: rgba(255,255,255,0.7);
+            border: none;
+            border-radius: 2px;
+            color: black;
+            outline: #0078d7;
+            text-indent: 2em;
+            font:bold 15px/30px "微软雅黑";
+        }
+        .sureOrcancel{
+            .outstyle;
+            #sure,#cancel{
+                width: 80px;
+                height: 30px;
+                font:bold 14px/30px "微软雅黑";
+                color: white;
+                background: rgba(255,255,255,0.2);
+                text-align: center;
+                outline: none;
+                cursor: pointer;
+                border-radius: 5px;
+                vertical-align: top;
+                margin-left: 40px;
+            }
+        }
+        .outstyle{
+            width: 300px;
+            height: 30px;
+            padding: 10px;
+            font: 16px/30px "微软雅黑";
+            color: white;
+        }
+        .instyle(@inw,@inh){
+            width: @inw;
+            height: @inh;
+            background: rgba(255,255,255,0.2);
+            border: none;
+            border-radius: 2px;
+            color: white;
+            outline: #0078d7;
+            text-indent: 1em;
+            
+        }
+    }
+    #noteamend{
+        width: @w;
+        background-color:  rgba(225,225,225,0.4); 
+        display: none;
+        position: absolute;
+        bottom: 0;
+        z-index: 99999;
+        border-radius: 5px;
+        .titleName{
+            width: 300px;
+            height: 30px;
+            padding: 20px 10px;
+            font: 18px/30px "微软雅黑";
+            color: white;
+            text-align: center;
+        }
+        .eventName{
+            .outstyle;
+            #eventText1{
+                .instyle(220px,30px);
+                font:bold 16px/30px "微软雅黑";
+                }
+        }
+        .alertTime{
+            .outstyle;
+            #alertText1{
+                .instyle(216px,30px);
+                font:bold 15px/30px "微软雅黑";
+               }
+        }
+        .eventDetail{
+            margin: 10px;
+            width: 300px;
+            height: 200px;
+            background: rgba(255,255,255,0.7);
+            border: none;
+            border-radius: 2px;
+            color: black;
+            outline: #0078d7;
+            text-indent: 2em;
+            font:bold 15px/30px "微软雅黑";
+        }
+        .sureOrcancel{
+            .outstyle;
+            #amend,#cancel1{
+                width: 80px;
+                height: 30px;
+                font:bold 14px/30px "微软雅黑";
+                color: white;
+                background: rgba(255,255,255,0.2);
+                text-align: center;
+                outline: none;
+                cursor: pointer;
+                border-radius: 5px;
+                vertical-align: top;
+                margin-left: 40px;
+            }
+        }
+        .outstyle{
+            width: 300px;
+            height: 30px;
+            padding: 10px;
+            font: 16px/30px "微软雅黑";
+            color: white;
+        }
+        .instyle(@inw,@inh){
+            width: @inw;
+            height: @inh;
+            background: rgba(255,255,255,0.2);
+            border: none;
+            border-radius: 2px;
+            color: white;
+            outline: #0078d7;
+            text-indent: 1em;
+            
+        }
+    }
+    #note_box{
+        width: @w;
+        height: 260px;
+        .background-color;
+        position: relative;
+        .addicon{
+            width: 20px;
+            height: 20px;
+            font:bold 20px/20px arial;
+            text-align: center;
+            color: white;
+            position: absolute;
+            top:38px;
+            right: 8px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        .titleName{
+            width: 100%;
+            height: 30px;
+            h2{
+                width: 100%;
+                height: 30px;
+                text-align: center;
+                font:bold 18px/30px "微软雅黑";
+                color: rgba(255,255,255,1);
+            }
+        }
+        .notelist{
+            width: 300px;
+            height: 210px;
+            margin: 10px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 5px;
+            
+            .list_ul{
+                width: 280px;
+                height: 190px;
+                padding: 10px;
+                overflow: auto;
+                li{
+                    width: 260px;
+                    height: 80px;
+                    border-radius: 5px;
+                    overflow: hidden;
+                    margin: 5px 0;
+                    padding: 0 10px;
+                    background: rgba(255,255,255,0.2);
+                    cursor: pointer;
+                    position: relative;
+                    h3{
+                        height: 25px;
+                        font:bold 18px/25px arial;
+                        text-overflow:ellipsis;
+                        white-space:nowrap;
+                        overflow:hidden;
+                    }
+                    .content_note{
+                        height: 25px;
+                        font: 14px/25px "微软雅黑";
+                        text-overflow:ellipsis;
+                        white-space:nowrap;
+                        overflow:hidden;
+                    }
+                }
+            }
+        }
+    }
+    
+    #rightmunel1{
+        width: 110px;
+        height: 20px;
+        font: 15px/20px "微软雅黑";
+        text-align: center;
+        color: white;
+        border: 2px solid rgba(255,255,255,0.7);
+        background-color: #0078d7;
+        padding: 5px;
+        cursor: pointer;
+        position: absolute;
+        left: 0;
+        top: 0;
+        display: none;
+        z-index: 999; 
+    }
+    
+    #select_month{
+        width: 320px;
+        height: 320px;
+//      background: red;
+        position: absolute;
+        top: 185px;
+        left: 20px;
+        z-index: -999;
+//      display: none;
+        opacity: 0;
+        color: rgba(255,255,255,1);
+        .month_list{
+            width: 100%;
+            height: 100%;
+//          background: yellow;
+            
+            li{
+                float: left;
+                width: 80px;
+                height: 80px;
+                margin-top: 26px;
+                text-align: center;
+                font: 16px/80px arial;
+                cursor: pointer;
+            }
+            .firstLine{
+                margin-top: 13px;
+            }
+            li:hover{
+                border: 2px solid rgba(255,255,255,0.7);
+                box-sizing: border-box;
+                vertical-align: top;
+                line-height: 76px;
+                
+            }
+        }
+    }
+    
+    
+    
+    .border(top,@bw:1px,@bc:rgba(255,255,255,0.5)){
+        border-top:@bw solid @bc;
+    }
+    .border(left,@bw:1px,@bc:rgba(255,255,255,0.5)){
+        border-left:@bw solid @bc;
+    }
+    .border(right,@bw:1px,@bc:rgba(255,255,255,0.5)){
+        border-right:@bw solid @bc;
+    }
+    .border(bottom,@bw:1px,@bc:rgba(255,255,255,0.5)){
+        border-bottom:@bw solid @bc;
+    }
+    .border(all,@bw:1px,@bc:rgba(255,255,255,0.5)){
+        border:@bw solid @bc;
+    }
+    
+    .background-color{
+        background-color:  rgba(225,225,225,0.2); 
+    }
+}
+
+#bk{
+    width: 218px;
+    height: 248px;
+    position: absolute;
+    top: 0;
+    left: 830px;
+    background: #6cb2d9;
+    padding: 0 10px;
+    display: none;
+    
+    backface-visibility:hidden;//不向屏幕是是否可见
+    
+     -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    
+    -webkit-perspective: 40px;
+    -moz-perspective: 400px;
+    -o-perspective: 400px;
+    perspective: 400px;
+    
+    -webkit-perspective-origin: center;
+    -moz-perspective-origin: center;
+    -o-perspective-origin: center;
+    perspective-origin: center; 
+    
+    -webkit-transform: rotateY(-180deg);
+    -moz-transform: rotateY(-180deg);
+    -o-transform: rotateY(-180deg);
+    transform: rotateY(-180deg);
+    
+    -webkit-transform-origin: center center 0;
+    -moz-transform-origin: center center 0;
+    -o-transform-origin: center center 0;
+    transform-origin: center center 0;
+    
+    transition: all 1s;
+    .set{
+        width: 100px;
+        height: 30px;
+        font: 14px/30px arial;
+        padding: 8px 0px 4px ;
+        color: white;
+        text-shadow: 0px 0px 4px 4px #4b7c97;
+        
+    }
+    #inp{
+        width: 218px;
+        height: 30px;
+        background: #4b7c97;
+        border: none;
+        outline: none;
+        border-radius: 6px;
+        -webkit-border-radius: 6px;
+        -moz-border-radius: 6px;
+        -o-border-radius: 6px;
+        text-indent: 2em;
+        color: white;
+    }
+    #search{
+        width: 60px;
+        height: 24px;
+        text-align: center;
+        color: #000000;
+        border: 1px solid black;
+        outline: none;
+        background: ghostwhite;
+        margin-top: 30px;
+        margin-left: 20px;
+         border-radius: 4px;
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        -o-border-radius: 4px;
+        cursor: pointer;
+    }
+    #tip{
+        display: inline-block;
+        height: 24px;
+        font: 6px/24px arial;
+        margin-left: 10px;
+        color: rgba(0,0,0,0.8);
+    }
+    #OKset{
+        width: 60px;
+        height: 24px;
+        text-align: center;
+        color: #000000;
+        border: 1px solid black;
+        outline: none;
+        background: ghostwhite;
+        margin: 70px 79px;
+         border-radius: 4px;
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        -o-border-radius: 4px;
+        cursor: pointer;
+    }
+}
+#weather{
+    width: 238px;
+    height: 248px;
+    position: absolute;
+    top: 0;
+    left: 830px;
+    display: none;
+    backface-visibility:hidden;
+    
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    
+    -webkit-perspective: 40px;
+    -moz-perspective: 400px;
+    -o-perspective: 400px;
+    perspective: 400px;
+    
+   -webkit-perspective-origin: center;
+    -moz-perspective-origin: center;
+    -o-perspective-origin: center;
+    perspective-origin: center; 
+    
+    -webkit-transform: rotateY(0deg);
+    -moz-transform: rotateY(0deg);
+    -o-transform: rotateY(0deg);
+    transform: rotateY(0deg);
+    
+    -webkit-transform-origin: center center 0;
+    -moz-transform-origin: center center 0;
+    -o-transform-origin: center center 0;
+    transform-origin: center center 0;
+    
+    transition: all 1s;
+    .bg_w{
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -999;
+    }
+    .city_sinformation{
+        width: 90%;
+        height: 60%;
+        padding-left:10% ;
+       
+        background: rgba(255,255,255,0.5);
+        overflow: hidden;
+        color: rgba(255,255,255,0.8);
+        .temp{
+            width: 100%;
+            height: 70px;
+            font-size: 3em;
+            line-height: 70px;
+            font-weight: bolder;
+        }
+        .address{
+            width: 30%;
+            height: 30px;
+            font:bold 16px/30px arial;
+            span{
+                margin-left: 4%;
+                font-weight: 900;
+                cursor: pointer;
+            }
+        }
+        .direction{
+            width: 100%;
+            height: 30px;
+            font:bold 16px/30px arial;
+        }
+        
+    }
+    .feature_weather{
+        width: 100%;
+        height: 40%;
+        background: rgba(0,0,0,0.2);
+        color: white;
+        
+        div{
+            float: left;
+            width: 33.333%;
+            height: 33.333%;
+            height:100%;
+            span{
+                display: block;
+                padding-top: 4px;
+                width: 100%;
+                height: 20px;
+                font: 15px/20px arial;
+                text-align: center;
+                
+            }
+            .tianqi{
+                width: 100%;
+                height: 50px;
+                font: 28px/50px arial;
+                border: none;
+                vertical-align: top;
+            }
+        }
+        div:hover{
+            background: rgba(0,0,0,0.1);;
+        }
+    }
+}
+

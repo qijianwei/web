@@ -1,0 +1,707 @@
+body {
+  margin: 0;
+  position: relative;
+}
+body .tags {
+  width: 200px;
+  height: 200px;
+  min-height: 150px;
+  min-width: 150px;
+  background: #ffffcc;
+  padding: 10px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-box-shadow: 5px 5px 7px rgba(33, 33, 33, 0.7);
+  overflow: hidden;
+}
+body .tags h3 {
+  font: 900 24px/40px arial;
+}
+body .tags h3 span {
+  font: 900 24px/40px "微软雅黑";
+}
+body .tags .time_doit {
+  width: 90%;
+  height: 30px;
+  font: 900 18px/30px arial;
+}
+body .tags .dothis {
+  width: 90%;
+  height: 60%;
+  overflow: hidden;
+  font-family: 'Reenie Beanie', arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 26px;
+  overflow: auto;
+  word-break: break-all;
+  word-wrap: break-word;
+}
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+h2,
+h3 {
+  margin: 0;
+  padding: 0;
+}
+img {
+  border: none;
+}
+input {
+  margin: 0;
+  padding: 0;
+}
+#cal_wrap {
+  background: #1f4386;
+  width: 320px;
+  height: 736px;
+  margin: 5px auto 0;
+  padding: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  position: relative;
+}
+#cal_wrap #bgimg {
+  position: absolute;
+  top: 36px;
+  right: 36px;
+  width: 20%;
+  height: 9%;
+  z-index: 999;
+  opacity: 0.8;
+  cursor: pointer;
+}
+#cal_wrap #bgimg:hover {
+  opacity: 1;
+}
+#cal_wrap #shadowbox {
+  width: 360px;
+  height: 1000px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  background: rgba(0, 0, 0, 0.5);
+  display: none;
+  z-index: 99;
+}
+#cal_wrap #timer_box {
+  width: 320px;
+  height: 112px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  background-color: rgba(225, 225, 225, 0.2);
+}
+#cal_wrap #timer_box .time_detail {
+  width: 300px;
+  height: 70px;
+  padding: 10px 10px 0 10px;
+  font: 50px/70px arial;
+  color: white;
+}
+#cal_wrap #timer_box .date_detail {
+  width: 310px;
+  height: 32px;
+  padding: 0 10px 10px 10px;
+  font: bolder 15px/22px arial;
+  color: #6192b3;
+  cursor: pointer;
+}
+#cal_wrap #timer_box .date_detail:hover {
+  color: white;
+}
+#cal_wrap #calendar_box {
+  width: 320px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  background-color: rgba(225, 225, 225, 0.2);
+}
+#cal_wrap #calendar_box .time_btn {
+  width: 300px;
+  height: 16px;
+  font: 15px/16px arial;
+  color: white;
+  padding: 16px 10px 0 10px;
+}
+#cal_wrap #calendar_box .time_btn .YearanfMonth {
+  display: inline-block;
+  width: 100px;
+  height: 16px;
+  float: left;
+  cursor: pointer;
+}
+#cal_wrap #calendar_box .time_btn .prev,
+#cal_wrap #calendar_box .time_btn .next {
+  display: inline-block;
+  height: 16px;
+  float: right;
+  cursor: pointer;
+  margin-left: 10px;
+}
+#cal_wrap #calendar_box .time_btn .prev img,
+#cal_wrap #calendar_box .time_btn .next img {
+  height: 16px;
+  width: 20px;
+}
+#cal_wrap #calendar_box .cal_content {
+  width: 320px;
+  height: 340px;
+  overflow: hidden;
+}
+#cal_wrap #calendar_box .cal_content ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+#cal_wrap #calendar_box .cal_content .ul1 {
+  width: 308px;
+  height: 52px;
+  padding: 0 6px;
+}
+#cal_wrap #calendar_box .cal_content .ul1 li {
+  width: 44px;
+  height: 52px;
+  display: inline-block;
+  text-align: center;
+  font: 15px/52px "微软雅黑";
+  color: white;
+}
+#cal_wrap #calendar_box .cal_content .ul2 {
+  width: 308px;
+  padding: 0 6px;
+}
+#cal_wrap #calendar_box .cal_content .ul2 li {
+  width: 44px;
+  height: 48px;
+  display: inline-block;
+  text-align: center;
+  font: 15px/48px "微软雅黑";
+  color: white;
+  vertical-align: top;
+  cursor: default;
+}
+#cal_wrap #calendar_box .cal_content .ul2 li:not(.selectedDay):hover {
+  width: 40px;
+  height: 43px;
+  border: 2px solid rgba(255, 255, 255, 0.7);
+  font: 15px/43px "微软雅黑";
+  vertical-align: text-top;
+  background: none;
+}
+#cal_wrap #calendar_box .cal_content .ul2 .selectedDay {
+  width: 40px;
+  height: 44px;
+  border: 2px solid rgba(255, 255, 255, 0.7);
+  background-color: #0078d7;
+}
+#cal_wrap #rightmune {
+  width: 110px;
+  height: 20px;
+  font: 15px/20px "微软雅黑";
+  text-align: center;
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.7);
+  background-color: #0078d7;
+  padding: 5px;
+  cursor: pointer;
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: none;
+  z-index: 999;
+}
+#cal_wrap #notedetail {
+  width: 320px;
+  background-color: rgba(225, 225, 225, 0.4);
+  display: none;
+  position: absolute;
+  bottom: 0;
+  z-index: 99999;
+  border-radius: 5px;
+}
+#cal_wrap #notedetail .titleName {
+  width: 300px;
+  height: 30px;
+  padding: 20px 10px;
+  font: 18px/30px "微软雅黑";
+  color: white;
+  text-align: center;
+}
+#cal_wrap #notedetail .eventName {
+  width: 300px;
+  height: 30px;
+  padding: 10px;
+  font: 16px/30px "微软雅黑";
+  color: white;
+}
+#cal_wrap #notedetail .eventName #eventText {
+  width: 220px;
+  height: 30px;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  border-radius: 2px;
+  color: white;
+  outline: #0078d7;
+  text-indent: 1em;
+  font: bold 16px/30px "微软雅黑";
+}
+#cal_wrap #notedetail .alertTime {
+  width: 300px;
+  height: 30px;
+  padding: 10px;
+  font: 16px/30px "微软雅黑";
+  color: white;
+}
+#cal_wrap #notedetail .alertTime #alertText {
+  width: 216px;
+  height: 30px;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  border-radius: 2px;
+  color: white;
+  outline: #0078d7;
+  text-indent: 1em;
+  font: bold 15px/30px "微软雅黑";
+}
+#cal_wrap #notedetail .eventDetail {
+  margin: 10px;
+  width: 300px;
+  height: 200px;
+  background: rgba(255, 255, 255, 0.7);
+  border: none;
+  border-radius: 2px;
+  color: black;
+  outline: #0078d7;
+  text-indent: 2em;
+  font: bold 15px/30px "微软雅黑";
+}
+#cal_wrap #notedetail .sureOrcancel {
+  width: 300px;
+  height: 30px;
+  padding: 10px;
+  font: 16px/30px "微软雅黑";
+  color: white;
+}
+#cal_wrap #notedetail .sureOrcancel #sure,
+#cal_wrap #notedetail .sureOrcancel #cancel {
+  width: 80px;
+  height: 30px;
+  font: bold 14px/30px "微软雅黑";
+  color: white;
+  background: rgba(255, 255, 255, 0.2);
+  text-align: center;
+  outline: none;
+  cursor: pointer;
+  border-radius: 5px;
+  vertical-align: top;
+  margin-left: 40px;
+}
+#cal_wrap #notedetail .outstyle {
+  width: 300px;
+  height: 30px;
+  padding: 10px;
+  font: 16px/30px "微软雅黑";
+  color: white;
+}
+#cal_wrap #noteamend {
+  width: 320px;
+  background-color: rgba(225, 225, 225, 0.4);
+  display: none;
+  position: absolute;
+  bottom: 0;
+  z-index: 99999;
+  border-radius: 5px;
+}
+#cal_wrap #noteamend .titleName {
+  width: 300px;
+  height: 30px;
+  padding: 20px 10px;
+  font: 18px/30px "微软雅黑";
+  color: white;
+  text-align: center;
+}
+#cal_wrap #noteamend .eventName {
+  width: 300px;
+  height: 30px;
+  padding: 10px;
+  font: 16px/30px "微软雅黑";
+  color: white;
+}
+#cal_wrap #noteamend .eventName #eventText1 {
+  width: 220px;
+  height: 30px;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  border-radius: 2px;
+  color: white;
+  outline: #0078d7;
+  text-indent: 1em;
+  font: bold 16px/30px "微软雅黑";
+}
+#cal_wrap #noteamend .alertTime {
+  width: 300px;
+  height: 30px;
+  padding: 10px;
+  font: 16px/30px "微软雅黑";
+  color: white;
+}
+#cal_wrap #noteamend .alertTime #alertText1 {
+  width: 216px;
+  height: 30px;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  border-radius: 2px;
+  color: white;
+  outline: #0078d7;
+  text-indent: 1em;
+  font: bold 15px/30px "微软雅黑";
+}
+#cal_wrap #noteamend .eventDetail {
+  margin: 10px;
+  width: 300px;
+  height: 200px;
+  background: rgba(255, 255, 255, 0.7);
+  border: none;
+  border-radius: 2px;
+  color: black;
+  outline: #0078d7;
+  text-indent: 2em;
+  font: bold 15px/30px "微软雅黑";
+}
+#cal_wrap #noteamend .sureOrcancel {
+  width: 300px;
+  height: 30px;
+  padding: 10px;
+  font: 16px/30px "微软雅黑";
+  color: white;
+}
+#cal_wrap #noteamend .sureOrcancel #amend,
+#cal_wrap #noteamend .sureOrcancel #cancel1 {
+  width: 80px;
+  height: 30px;
+  font: bold 14px/30px "微软雅黑";
+  color: white;
+  background: rgba(255, 255, 255, 0.2);
+  text-align: center;
+  outline: none;
+  cursor: pointer;
+  border-radius: 5px;
+  vertical-align: top;
+  margin-left: 40px;
+}
+#cal_wrap #noteamend .outstyle {
+  width: 300px;
+  height: 30px;
+  padding: 10px;
+  font: 16px/30px "微软雅黑";
+  color: white;
+}
+#cal_wrap #note_box {
+  width: 320px;
+  height: 260px;
+  background-color: rgba(225, 225, 225, 0.2);
+  position: relative;
+}
+#cal_wrap #note_box .addicon,
+#cal_wrap #note_box .tagicon {
+  width: 20px;
+  height: 20px;
+  font: bold 20px/20px arial;
+  text-align: center;
+  color: white;
+  position: absolute;
+  top: 38px;
+  right: 8px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+#cal_wrap #note_box .tagicon {
+  right: 30px;
+}
+#cal_wrap #note_box .titleName {
+  width: 100%;
+  height: 30px;
+}
+#cal_wrap #note_box .titleName h2 {
+  width: 100%;
+  height: 30px;
+  text-align: center;
+  font: bold 18px/30px "微软雅黑";
+  color: #ffffff;
+}
+#cal_wrap #note_box .notelist {
+  width: 300px;
+  height: 210px;
+  margin: 10px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+}
+#cal_wrap #note_box .notelist .list_ul {
+  width: 280px;
+  height: 190px;
+  padding: 20px 10px;
+  overflow: auto;
+}
+#cal_wrap #note_box .notelist .list_ul li {
+  width: 260px;
+  height: 80px;
+  border-radius: 5px;
+  overflow: hidden;
+  margin: 5px 0;
+  padding: 0 10px;
+  background: rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  position: relative;
+}
+#cal_wrap #note_box .notelist .list_ul li h3 {
+  height: 25px;
+  font: bold 18px/25px arial;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+#cal_wrap #note_box .notelist .list_ul li .content_note {
+  height: 25px;
+  font: 14px/25px "微软雅黑";
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+#cal_wrap #rightmunel1 {
+  width: 110px;
+  height: 20px;
+  font: 15px/20px "微软雅黑";
+  text-align: center;
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.7);
+  background-color: #0078d7;
+  padding: 5px;
+  cursor: pointer;
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: none;
+  z-index: 999;
+}
+#cal_wrap #select_month {
+  width: 320px;
+  height: 320px;
+  position: absolute;
+  top: 185px;
+  left: 20px;
+  z-index: -999;
+  opacity: 0;
+  color: #ffffff;
+}
+#cal_wrap #select_month .month_list {
+  width: 100%;
+  height: 100%;
+}
+#cal_wrap #select_month .month_list li {
+  float: left;
+  width: 80px;
+  height: 80px;
+  margin-top: 26px;
+  text-align: center;
+  font: 16px/80px arial;
+  cursor: pointer;
+}
+#cal_wrap #select_month .month_list .firstLine {
+  margin-top: 13px;
+}
+#cal_wrap #select_month .month_list li:hover {
+  border: 2px solid rgba(255, 255, 255, 0.7);
+  box-sizing: border-box;
+  vertical-align: top;
+  line-height: 76px;
+}
+#cal_wrap .background-color {
+  background-color: rgba(225, 225, 225, 0.2);
+}
+#bk {
+  width: 218px;
+  height: 248px;
+  position: absolute;
+  top: 0;
+  left: 830px;
+  background: #6cb2d9;
+  padding: 0 10px;
+  display: none;
+  backface-visibility: hidden;
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-perspective: 40px;
+  -moz-perspective: 400px;
+  -o-perspective: 400px;
+  perspective: 400px;
+  -webkit-perspective-origin: center;
+  -moz-perspective-origin: center;
+  -o-perspective-origin: center;
+  perspective-origin: center;
+  -webkit-transform: rotateY(-180deg);
+  -moz-transform: rotateY(-180deg);
+  -o-transform: rotateY(-180deg);
+  transform: rotateY(-180deg);
+  -webkit-transform-origin: center center 0;
+  -moz-transform-origin: center center 0;
+  -o-transform-origin: center center 0;
+  transform-origin: center center 0;
+  transition: all 1s;
+}
+#bk .set {
+  width: 100px;
+  height: 30px;
+  font: 14px/30px arial;
+  padding: 8px 0px 4px ;
+  color: white;
+  text-shadow: 0px 0px 4px 4px #4b7c97;
+}
+#bk #inp {
+  width: 218px;
+  height: 30px;
+  background: #4b7c97;
+  border: none;
+  outline: none;
+  border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -o-border-radius: 6px;
+  text-indent: 2em;
+  color: white;
+}
+#bk #search {
+  width: 60px;
+  height: 24px;
+  text-align: center;
+  color: #000000;
+  border: 1px solid black;
+  outline: none;
+  background: ghostwhite;
+  margin-top: 30px;
+  margin-left: 20px;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -o-border-radius: 4px;
+  cursor: pointer;
+}
+#bk #tip {
+  display: inline-block;
+  height: 24px;
+  font: 6px/24px arial;
+  margin-left: 10px;
+  color: rgba(0, 0, 0, 0.8);
+}
+#bk #OKset {
+  width: 60px;
+  height: 24px;
+  text-align: center;
+  color: #000000;
+  border: 1px solid black;
+  outline: none;
+  background: ghostwhite;
+  margin: 70px 79px;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -o-border-radius: 4px;
+  cursor: pointer;
+}
+#weather {
+  width: 238px;
+  height: 248px;
+  position: absolute;
+  top: 0;
+  left: 830px;
+  display: none;
+  backface-visibility: hidden;
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-perspective: 40px;
+  -moz-perspective: 400px;
+  -o-perspective: 400px;
+  perspective: 400px;
+  -webkit-perspective-origin: center;
+  -moz-perspective-origin: center;
+  -o-perspective-origin: center;
+  perspective-origin: center;
+  -webkit-transform: rotateY(0deg);
+  -moz-transform: rotateY(0deg);
+  -o-transform: rotateY(0deg);
+  transform: rotateY(0deg);
+  -webkit-transform-origin: center center 0;
+  -moz-transform-origin: center center 0;
+  -o-transform-origin: center center 0;
+  transform-origin: center center 0;
+  transition: all 1s;
+}
+#weather .bg_w {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -999;
+}
+#weather .city_sinformation {
+  width: 90%;
+  height: 60%;
+  padding-left: 10% ;
+  background: rgba(255, 255, 255, 0.5);
+  overflow: hidden;
+  color: rgba(255, 255, 255, 0.8);
+}
+#weather .city_sinformation .temp {
+  width: 100%;
+  height: 70px;
+  font-size: 3em;
+  line-height: 70px;
+  font-weight: bolder;
+}
+#weather .city_sinformation .address {
+  width: 30%;
+  height: 30px;
+  font: bold 16px/30px arial;
+}
+#weather .city_sinformation .address span {
+  margin-left: 4%;
+  font-weight: 900;
+  cursor: pointer;
+}
+#weather .city_sinformation .direction {
+  width: 100%;
+  height: 30px;
+  font: bold 16px/30px arial;
+}
+#weather .feature_weather {
+  width: 100%;
+  height: 40%;
+  background: rgba(0, 0, 0, 0.2);
+  color: white;
+}
+#weather .feature_weather div {
+  float: left;
+  width: 33.333%;
+  height: 33.333%;
+  height: 100%;
+}
+#weather .feature_weather div span {
+  display: block;
+  padding-top: 4px;
+  width: 100%;
+  height: 20px;
+  font: 15px/20px arial;
+  text-align: center;
+}
+#weather .feature_weather div .tianqi {
+  width: 100%;
+  height: 50px;
+  font: 28px/50px arial;
+  border: none;
+  vertical-align: top;
+}
+#weather .feature_weather div:hover {
+  background: rgba(0, 0, 0, 0.1);
+}

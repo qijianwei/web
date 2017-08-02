@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>日历</title>
+		<link rel="stylesheet" type="text/css" href="css/calendar_finish3.css"/>
+		<script src="http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js" type="text/ecmascript"></script>
+		<script src="js/city.js"></script>
+		<script src="js/jquery-1.12.0.js"></script>
+		<script src="js/animation2.js"></script>
+		<script src="js/calendar_finish3.js"></script>
+	</head>
+	<body>
+		<div id="zhankai">日历</div>
+		<div id="cal_wrap">
+			<img class="suolue" src="img/suolue.png"/>
+			<img src="img/dw.png" id="bgimg"/>
+			<div id="timer_box">
+				<div class="time_detail"></div>
+				<div class="date_detail"></div>
+			</div>
+			<div id="calendar_box">
+				<div class="time_btn"><span class="YearandMonth"></span><span class="next"><img src="img/next.png"/></span><span class="prev"><img src="img/prev.png"/></span></div>
+				<div class="cal_content">
+					<ul class="ul1">
+						<li>一</li><li>二</li><li>三</li><li>四</li><li>五</li><li>六</li><li>日</li>
+					</ul>
+					<ul class="ul2"></ul>
+				</div>
+			</div>
+			<div id="rightmune">＋添加当日备忘</div>
+			<div id="notedetail">
+				<div class="titleName"><h2>请添加当日备忘录</h2></div>
+				<div class="eventName"><span>事件名称：</span><input type="text" id="eventText" placeholder="请输入事件名称"/></div>
+				<div class="alertTime"><span>提醒时间：</span><input type="datetime-local" id="alertText" value="" /></div>
+				<textarea class="eventDetail" placeholder="请输入内容(最多可输入140个字符)" maxlength="140"></textarea>
+				<div class="sureOrcancel"><input type="button" name="sure" id="sure" value="确定" /><input type="button" name="cancel" id="cancel" value="取消" /></div>
+			</div>
+			<div id="noteamend">
+				<div class="titleName"><h2>请添加当日备忘录</h2></div>
+				<div class="eventName"><span>事件名称：</span><input type="text" id="eventText1" placeholder="请输入事件名称"/></div>
+				<div class="alertTime"><span>提醒时间：</span><input type="datetime-local" id="alertText1" value="" /></div>
+				<textarea class="eventDetail" placeholder="请输入内容(最多可输入140个字符)" maxlength="140"></textarea>
+				<div class="sureOrcancel"><input type="button" name="amend" id="amend" value="修改" /><input type="button" name="cancel1" id="cancel1" value="取消" /></div>
+			</div>
+			<div id="note_box">
+				<div class="addicon">+</div>
+				<div class="titleName">
+					<h2>备忘录</h2>
+				</div>
+				<div class="notelist">
+					<ul class="list_ul">
+						<!--<li>
+							<h3>2017-06-03</h3>
+							<h3>标题<h3>
+							<div class="content_note">一行笔记一行笔记一行笔记一行笔记一行笔记一行笔记</div>
+						</li>-->
+					</ul>
+				</div>
+			</div>
+			<div id="rightmunel1">×删除</div>
+			<div id="shadowbox"></div>
+			<div id="select_month">
+				<ul class="month_list">
+					<li class="firstLine">1月</li>
+					<li class="firstLine">2月</li>
+					<li class="firstLine">3月</li>
+					<li class="firstLine">4月</li>
+					<li>5月</li>
+					<li>6月</li>
+					<li>7月</li>
+					<li>8月</li>
+					<li>9月</li>
+					<li>10月</li>
+					<li>11月</li>
+					<li>12月</li>
+				</ul>
+			</div>
+			
+		</div>
+		<!--<div id="weater_wrap">-->
+			<div id="bk">
+				<div class="set">设置</div>
+				<input type="text" id="inp" value="" placeholder="请输入自定义城市名"/><label for="inp"></label>
+				<input type="button" name="" id="search" value="搜索" /><span id="tip">点击按钮进行搜索</span>
+				<input type="button" value="完成" id="OKset"/>
+			</div>
+			<div id="weather">
+				<img class="bg_w" src="img/w0.jpg"/>
+				<div class="city_sinformation">
+					<div class="temp">19℃</div>
+					<div class="address"><span>上海</span><span class="addspan">+</span></div>
+					<div class="direction">风向:南风</div>
+				</div>
+				<div class="feature_weather">
+					<div class="today">
+						<span>今天</span>
+						<span>18℃/19℃</span>
+						<span class="tianqi">晴</span>
+					</div>
+					<div class="tomorrow">
+						<span>明天</span>
+						<span>18℃/19℃</span>
+						<span class="tianqi">晴</span>
+					</div>
+					<div class="theDayAfterTomrrow">
+						<span>后天</span>
+						<span>18℃/19℃</span>
+						<span class="tianqi">晴</span>
+					</div>
+				</div>
+				
+			</div>
+			
+		<!--</div>-->
+	</body>
+</html>
